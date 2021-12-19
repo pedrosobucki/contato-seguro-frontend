@@ -109,7 +109,7 @@ export function NewUserModal({isOpen, onRequestClose}: NewUserModalProps){
                     placeholder="Empresas"
 
                     style={multiselectStyle}
-
+                    emptyRecordMsg="Nenhum resultado correspondente..."
                     options={selectCompanies}
                     onSelect={event => {
                         console.log(event)

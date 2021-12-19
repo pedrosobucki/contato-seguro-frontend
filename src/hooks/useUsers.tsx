@@ -1,5 +1,8 @@
 import axios from 'axios'
 import {createContext, useState, useEffect, ReactNode, useContext} from 'react'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 //import {api} from '../services/api'
 
 const api = axios.create({
@@ -58,24 +61,28 @@ export function UsersProvider({children} : UsersProviderProps){
 
     async function createUser(userInput : UserInput){
 
-        api.post('/user/create', userInput).then(response =>{
+        if(Array.isArray(userInput.companies) && userInput.companies[0] !== 0){
+            
+            api.post('/user/create', userInput).then(response =>{
+                const user = response.data;
 
-            const user = response.data;
+                setUsers([
+                    ...users,
+                    user
+                ])
+    
+            })
 
-            //console.log(response.data)
+        }else{
 
-            console.log(user)
+            const MySwal = withReactContent(Swal);
 
-            setUsers([
-                ...users,
-                user
-            ])
-
-        })
-        
-
-        //console.log(JSON.stringify(userInput))
-        //console.log(userInput.birth_date.toISOString().split('T')[0])
+            await MySwal.fire({
+                title: <strong>Atenção!</strong>,
+                html: <i>Insira as empresas do usuário!</i>,
+                icon: 'warning'
+              })
+        }
     
     }
 
