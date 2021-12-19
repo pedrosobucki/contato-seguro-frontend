@@ -3,8 +3,8 @@ import { Header } from "./components/Header";
 import { GlobalStyle } from "./styles/global";
 import { useState } from "react";
 import {NewTransactionModal} from './components/NewTransactionModal/index';
-import {TransactionsProvider } from "./hooks/useTransactions";
 import {UsersProvider } from "./hooks/useUsers";
+import { NewUserModal } from "./components/NewUserModal";
 
 export function App() {
 
@@ -24,11 +24,11 @@ export function App() {
 
   return (
     <UsersProvider>
-      <Header onOpenNewTransactionModal={handleOpenNewUserModal} />
+      <Header />
 
-      <Dashboard />
+      <Dashboard onOpenNewUserModal={handleOpenNewUserModal}/>
 
-      <NewTransactionModal
+      <NewUserModal
         isOpen={isNewUserModalOpen}
         onRequestClose={handleCloseNewUserModal}
       />

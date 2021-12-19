@@ -1,10 +1,16 @@
 import { Container } from "../Dashboard/styles";
 import { Summary } from "../Summary";
 import { TransactionsTable } from "../TransactionsTable";
+import Add from '@material-ui/icons/Add';
 
-export function Dashboard(){
+interface DashboardProps{
+    onOpenNewUserModal: () => void
+}
+
+export function Dashboard({onOpenNewUserModal} : DashboardProps){
     return (
         <Container>
+            <button type='button' onClick={onOpenNewUserModal} id="new-user"><Add />Novo Usuário</button>
             <TransactionsTable />
         </Container>
     )

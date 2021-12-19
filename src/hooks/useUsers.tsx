@@ -16,7 +16,16 @@ interface User {
     companies: string
 }
 
-type UserInput = Omit<User, 'id_users'>
+interface UserInput {
+    name: string,
+    email: string,
+    telephone: string,
+    birth_date: Date,
+    birth_city: string,
+    companies: number[]
+}
+
+//type UserInput = Omit<User, 'id_users' | 'companies'>
 
 interface UsersProviderProps{
     children: ReactNode
