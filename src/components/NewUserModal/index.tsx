@@ -25,9 +25,9 @@ export function NewUserModal({isOpen, onRequestClose}: NewUserModalProps){
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [telephone, setTelephone] = useState('')
-    const [birth_date, setBirth_date] = useState(new Date)
+    const [birth_date, setBirth_date] = useState('')
     const [birth_city, setBirth_city] = useState('')
-    const [companies, setCompanies] = useState([])
+    const [companies, setCompanies] = useState([0])
     
 
     async function handleCreateNewUser(event: FormEvent){
@@ -46,9 +46,9 @@ export function NewUserModal({isOpen, onRequestClose}: NewUserModalProps){
         setName('')
         setEmail('')
         setTelephone('')
-        setBirth_date(new Date)
+        setBirth_date('')
         setBirth_city('')
-        setCompanies([])
+        setCompanies([0])
 
         onRequestClose() //close modal
     }
@@ -81,7 +81,7 @@ export function NewUserModal({isOpen, onRequestClose}: NewUserModalProps){
 
                 <input
                 placeholder="Email"
-                type="number"
+                type="text"
                 required
                 onChange={event => setEmail(event.target.value)}/>
 
@@ -92,8 +92,13 @@ export function NewUserModal({isOpen, onRequestClose}: NewUserModalProps){
 
                 <input
                 placeholder="Cidade de nascimento"
-                type="date"
+                type="text"
                 onChange={event => setBirth_city(event.target.value)}/>
+
+                <input 
+                placeholder="Data de nascimento"
+                type="date"
+                onChange={event => setBirth_date(new Date(event.target.value).toISOString().split('T')[0])}/>
 
                 <Multiselect
                     placeholder="Empresas"
@@ -101,12 +106,22 @@ export function NewUserModal({isOpen, onRequestClose}: NewUserModalProps){
                     options={selectCompanies}
                     onSelect={event => {
                         console.log(event)
-                        let companies:number[] = []
+                        let selected:number[] = []
 
-                        event.map((company:Company) => (companies.push(company.id)))
-                        //setCompanies(companies)
+                        event.map((company:Company) => {
+                            selected.push(company.id)
+                            setCompanies(selected)
+                        })
                     }}
-                    onRemove={event => console.log(event)}
+                    onRemove={event => {
+                        console.log(event)
+                        let selected:number[] = []
+
+                        event.map((company:Company) => {
+                            selected.push(company.id)
+                            setCompanies(selected)
+                        })
+                    }}
                     displayValue="name"
                 />
 

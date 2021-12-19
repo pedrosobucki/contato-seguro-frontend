@@ -11,7 +11,7 @@ interface User {
     name: string,
     email: string,
     telephone: string,
-    birth_date: Date,
+    birth_date: string,
     birth_city: string,
     companies: string
 }
@@ -20,7 +20,7 @@ interface UserInput {
     name: string,
     email: string,
     telephone: string,
-    birth_date: Date,
+    birth_date: string,
     birth_city: string,
     companies: number[]
 }
@@ -58,13 +58,16 @@ export function UsersProvider({children} : UsersProviderProps){
 
     async function createUser(userInput : UserInput){
 
-        const response = await axios.post('/user/create', userInput)
-        const {user} = response.data;
+        // const response = await api.post('/user/create', userInput)
+        // const {user} = response.data;
 
-        setUsers([
-            ...users,
-            user
-        ])
+        // setUsers([
+        //     ...users,
+        //     user
+        // ])
+
+        console.log(userInput)
+        //console.log(userInput.birth_date.toISOString().split('T')[0])
     
     }
 

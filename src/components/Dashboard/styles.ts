@@ -13,6 +13,7 @@ export const Container = styled.main `
         background: #696969;
         border: 0;
         padding: 0 2rem;
+        margin: 0 0 0 1rem;
         border-radius: 0.25rem;
         height: 3rem;
         transition: filter 0.2s;
