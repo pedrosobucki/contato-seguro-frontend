@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import backgroundImage from "../assets/office-background.jpg"
+import backgroundImage from "../assets/office-background.png"
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -15,15 +15,15 @@ export const GlobalStyle = createGlobalStyle`
         --orange: #F05340;
         --gray: #6C6C6C;
 
-        background: url(${backgroundImage})  no-repeat center center fixed;
-        backdrop-filter: blur(10px);
+        // background: url(${backgroundImage})  no-repeat center center fixed;
+        // backdrop-filter: blur(10px);
 
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // -o-background-size: cover;
+        // background-size: cover;
 
-        -webkit-font-smoothing: antialiased;
+        // -webkit-font-smoothing: antialiased;
     }
 
     *{
@@ -34,15 +34,15 @@ export const GlobalStyle = createGlobalStyle`
 
     body{
 
-        // background: url(${backgroundImage})  no-repeat center center fixed;
-        // backdrop-filter: blur(3px);
+        height: 100%;
+        background: url(${backgroundImage})  no-repeat center center fixed;
 
-        // -webkit-background-size: cover;
-        // -moz-background-size: cover;
-        // -o-background-size: cover;
-        // background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
 
-        // -webkit-font-smoothing: antialiased;
+        -webkit-font-smoothing: antialiased;
 
     }
 

@@ -1,8 +1,10 @@
 import axios from 'axios'
 import {createContext, useState, useEffect, ReactNode, useContext} from 'react'
-import {api} from '../services/api'
+//import {api} from '../services/api'
 
-const baseUrl = 'http://10.0.0.111:8080/api/'
+const api = axios.create({
+    baseURL: `http://localhost:8080/api/`
+})
 
 interface User {
     id_user: number,
@@ -36,12 +38,11 @@ export function UsersProvider({children} : UsersProviderProps){
     useEffect(() =>{
         
         // mock api
-        api.get('users')
-            .then(response => setUsers(response.data.users))
-
-        // axios.get('users')
+        // api.get('users')
         //     .then(response => setUsers(response.data.users))
-        //     console.log(baseUrl + 'user')
+
+        api.get('user')
+            .then(response => setUsers(response.data))
 
 
     }, [])
