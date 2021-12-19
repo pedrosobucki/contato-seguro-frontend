@@ -25,6 +25,8 @@ export const Container = styled.div`
             border-radius: 0%.25rem;
             color: var(--title);
 
+            height: 5rem;
+
             &.deposit{
                 color: var(--green);
             }

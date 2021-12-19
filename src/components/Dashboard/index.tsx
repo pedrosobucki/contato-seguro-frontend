@@ -1,5 +1,4 @@
 import { Container } from "../Dashboard/styles";
-import { Summary } from "../Summary";
 import { TransactionsTable } from "../TransactionsTable";
 import Add from '@material-ui/icons/Add';
 

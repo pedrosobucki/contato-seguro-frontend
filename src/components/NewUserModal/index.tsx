@@ -10,7 +10,7 @@ import { useUsers } from "../../hooks/useUsers";
 interface NewUserModalProps {
     isOpen: boolean;
     onRequestClose: () => void;
-}
+} 
 
 interface Company {
     id: number,
@@ -103,6 +103,7 @@ export function NewUserModal({isOpen, onRequestClose}: NewUserModalProps){
                 <input 
                 placeholder="Data de nascimento"
                 type="date"
+                required
                 onChange={event => setBirth_date(new Date(event.target.value).toISOString().split('T')[0])}/>
 
                 <Multiselect
