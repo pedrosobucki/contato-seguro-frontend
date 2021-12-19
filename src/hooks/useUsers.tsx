@@ -58,15 +58,23 @@ export function UsersProvider({children} : UsersProviderProps){
 
     async function createUser(userInput : UserInput){
 
-        // const response = await api.post('/user/create', userInput)
-        // const {user} = response.data;
+        api.post('/user/create', userInput).then(response =>{
 
-        // setUsers([
-        //     ...users,
-        //     user
-        // ])
+            const user = response.data;
 
-        console.log(userInput)
+            //console.log(response.data)
+
+            console.log(user)
+
+            setUsers([
+                ...users,
+                user
+            ])
+
+        })
+        
+
+        //console.log(JSON.stringify(userInput))
         //console.log(userInput.birth_date.toISOString().split('T')[0])
     
     }
