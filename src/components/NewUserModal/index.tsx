@@ -93,7 +93,22 @@ export function NewUserModal({isOpen, onRequestClose}: NewUserModalProps){
                 <input
                 placeholder="Telefone"
                 type="text"
-                onChange={event => setTelephone(event.target.value)}/>
+                onChange={event => {
+                    var r = event.target.value.replace(/\D/g, "");
+                    r = r.replace(/^0/, "");
+                    if (r.length > 10) {
+                        r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+                    } else if (r.length > 5) {
+                        r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+                    } else if (r.length > 2) {
+                        r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+                    } else {
+                        r = r.replace(/^(\d*)/, "($1");
+                    }
+
+                    event.target.value = r
+                    setTelephone(event.target.value)
+                }}/>
 
                 <input
                 placeholder="Cidade de nascimento"
