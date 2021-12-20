@@ -66,3 +66,4 @@ Aqui na Contato Seguro, utilizamos __Docker__ nos nossos ambientes, então será
 - Separação em commits, especialmente com boas mensagens de identificação.
 
 # Rodando o Servidor
+- Após rodar o comnado "yarn install" para instalar os node_modules no projeto, executar o comnado yarn start para que o servidor inicia na porta 3000
